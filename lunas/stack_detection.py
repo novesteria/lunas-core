@@ -74,4 +74,39 @@ def detect_stacks(code_path: str | Path) -> list[str]:
     return detected
 
 
-__all__ = ["detect_stacks"]
+_SKIP_DIRS = {"node_modules", "__MACOSX", "dist", "build", "venv", ".venv", "__pycache__"}
+
+
+def find_project_root(code_path: str | Path, max_depth: int = 3) -> Path:
+    """The directory the project actually lives in.
+
+    An upload is often a zip of a folder, or a folder of folders
+    (``deneme-1/kod/index.html``): nothing is detected at the top, every
+    layer skips and the report reads "fail, 0 issues" on a working app.
+    When the given directory has no stack, the shallowest directory below
+    it (up to ``max_depth`` levels) that has one is used, provided it is
+    the only one at that depth; otherwise the given directory is kept.
+    """
+    root = Path(code_path)
+    if not root.is_dir() or detect_stacks(root):
+        return root
+    level = [root]
+    for _ in range(max_depth):
+        children = [
+            c
+            for d in level
+            for c in sorted(d.iterdir())
+            if c.is_dir() and not c.name.startswith(".") and c.name not in _SKIP_DIRS
+        ]
+        # a signal file in the directory itself, not in a child: the
+        # wrapper folder must not win over the folder holding the code
+        found = [c for c in children if any((c / sig).exists() for sigs in _STACK_SIGNALS.values() for sig in sigs)]
+        if len(found) == 1:
+            return found[0]
+        if found:
+            return root
+        level = children
+    return root
+
+
+__all__ = ["detect_stacks", "find_project_root"]

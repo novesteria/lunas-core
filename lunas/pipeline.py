@@ -26,7 +26,7 @@ from lunas.checks import all_layers
 from lunas.checks.base import CheckLayer, ValidationContext
 from lunas.llm_client import LLMClient
 from lunas.result import LayerResult, ValidationReport, Verdict
-from lunas.stack_detection import detect_stacks
+from lunas.stack_detection import detect_stacks, find_project_root
 
 if TYPE_CHECKING:
     from lunas.design_dna import DesignDNA
@@ -79,7 +79,7 @@ class ValidationPipeline:
     ) -> ValidationReport:
         """Run the pipeline against ``code_path``."""
         start = time.monotonic()
-        path = Path(code_path).resolve()
+        path = find_project_root(Path(code_path).resolve())
 
         stacks = detect_stacks(path)
         ctx = ValidationContext(
