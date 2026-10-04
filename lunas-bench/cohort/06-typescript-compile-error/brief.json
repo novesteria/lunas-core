@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "archetype": "info-display",
+  "intent": "A React + TypeScript component that displays a user's profile (name, email, joined date). Single page, no routing.",
+  "stack": {
+    "frontend": "React 18",
+    "language": "TypeScript",
+    "build_tool": "Vite"
+  },
+  "brand": {
+    "has_logo": false,
+    "palette": {
+      "primary":   "#1F2937",
+      "secondary": "#374151",
+      "accent":    "#3B82F6",
+      "bg":        "#FFFFFF",
+      "fg":        "#111827"
+    },
+    "fonts": {
+      "heading": "Inter",
+      "body":    "Inter"
+    },
+    "tone": ["neutral", "factual"]
+  },
+  "philosophy": {
+    "id": "editorial",
+    "label": "Editorial",
+    "rules": {
+      "max_colors": 5,
+      "typography_style": "sans-serif",
+      "spacing_scale": "comfortable",
+      "decoration": "minimal"
+    }
+  },
+  "density": "comfortable",
+  "motion": "subtle",
+  "features": [
+    "display user name, email, and joined date",
+    "format joined date as 'Joined <Month Year>'"
+  ],
+  "notes": "Standard React + TS. UserProfile type lives in src/types.ts; UserCard component lives in src/UserCard.tsx."
+}

@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "passed": false,
+  "failed_layer": "design_fidelity",
+  "failed_stack": "static_html",
+  "deterministic_override_expected": false,
+  "calibration": {
+    "model": "claude-opus-4-7",
+    "captured_on": "2026-05-21",
+    "summary": "Design fidelity failed (overall 5/10) — weak dimension: density_motion (2/10)",
+    "overall_score": 5,
+    "dimensions": {
+      "palette": 9,
+      "philosophy": 4,
+      "density_motion": 2,
+      "tone_microcopy": 9
+    },
+    "forced_fail": false
+  },
+  "rationale": "The brief sets `density: spacious` and `spacing_scale: spacious` and the notes explicitly call for 'generous whitespace, slow reading rhythm, vertical breathing room'. The generated styles.css uses 0.25-0.5rem paddings, gaps, and margins throughout. The LLM scores density_motion at 2/10 — below the `_MIN_DIMENSION_SCORE = 3` floor, which triggers a weak-dimension FAIL even though `forced_fail` stays false. Palette and tone score well; philosophy is borderline at 4/10. The deterministic override is silent on this axis — `editorial` has no forbidden-pattern entries, palette hexes are present, and the brief's fonts (Playfair Display + Source Sans 3) are imported and used."
+}

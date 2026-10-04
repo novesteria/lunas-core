@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "archetype": "marketing-landing",
+  "intent": "A magazine-style product landing page: hero with one headline, two short value-proposition sections, a quote, and a call-to-action. The brand voice is editorial — generous whitespace, slow reading rhythm, vertical breathing room between sections.",
+  "stack": {
+    "html": "single index.html"
+  },
+  "brand": {
+    "has_logo": false,
+    "palette": {
+      "primary":   "#2A4A38",
+      "secondary": "#0F1F18",
+      "accent":    "#C9A24A",
+      "bg":        "#FAF7F1",
+      "fg":        "#1A1A1A"
+    },
+    "fonts": {
+      "heading": "Playfair Display",
+      "body":    "Source Sans 3"
+    },
+    "tone": ["editorial", "calm", "considered"]
+  },
+  "philosophy": {
+    "id": "editorial",
+    "label": "Editorial",
+    "rules": {
+      "max_colors": 5,
+      "typography_style": "serif heading + sans body",
+      "spacing_scale": "spacious",
+      "decoration": "minimal"
+    }
+  },
+  "density": "spacious",
+  "motion": "subtle",
+  "features": [
+    "single hero headline + supporting line",
+    "two value-proposition sections with generous spacing between",
+    "a long-form quote with attribution",
+    "single CTA at the bottom"
+  ],
+  "notes": "Critical: spacing_scale = 'spacious' and density = 'spacious'. The brief explicitly says 'generous whitespace, slow reading rhythm, vertical breathing room'. If the page ships with SaaS-dashboard-tight defaults (p-2, gap-2, m-1), the brand voice is broken regardless of palette/typography."
+}

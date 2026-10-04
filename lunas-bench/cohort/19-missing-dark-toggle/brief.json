@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "archetype": "form-heavy",
+  "intent": "A small note-taking single-page app. Users can write notes in a textarea, save them to a list below, and switch between light mode and dark mode with a toggle in the header.",
+  "stack": {
+    "html": "single index.html",
+    "language": "JavaScript (vanilla)"
+  },
+  "brand": {
+    "has_logo": false,
+    "palette": {
+      "primary":   "#3B82F6",
+      "secondary": "#1F2937",
+      "accent":    "#F59E0B",
+      "bg":        "#FFFFFF",
+      "fg":        "#111827"
+    },
+    "fonts": {
+      "heading": "Inter",
+      "body":    "Inter"
+    },
+    "tone": ["functional", "calm"]
+  },
+  "philosophy": {
+    "id": "",
+    "label": "",
+    "rules": {}
+  },
+  "density": "comfortable",
+  "motion": "subtle",
+  "features": [
+    "write a note in the textarea and save with the Add button",
+    "rendered notes appear in a list below the input",
+    "light/dark mode toggle"
+  ],
+  "notes": "Vanilla HTML + JS. The dark-mode toggle is a primary feature, not a nice-to-have. Pattern: a button in the header that flips a class on body or sets a data-theme attribute, with CSS variables driving the colors."
+}

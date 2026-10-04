@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "passed": false,
+  "failed_layer": "react_prop_consistency",
+  "failed_stack": "node",
+  "deterministic_override_expected": false,
+  "details_contains": {
+    "component": "CryptoCard",
+    "undeclared_prop": "crypto",
+    "declared_prop": "coin"
+  },
+  "rationale": "`CryptoCard.tsx` declares `interface CryptoCardProps { coin: CryptoCurrency }`. `CryptoGrid.tsx` calls `<CryptoCard crypto={c} />` — passing a prop named `crypto`, not `coin`. At runtime the component receives `coin` as undefined and crashes on `coin.price.toFixed()`. `react_prop_consistency` walks every JSX call site: extracts the component's declared Props interface, parses the attribute names in the open tag, subtracts known builtins (key, ref, className, on*, data-*, aria-*), and flags any remaining attributes that aren't in the declared Props. The case has no `tsconfig.json`, so `tsc` skips cleanly — this layer is the only check that catches the mismatch. Even with tsconfig, tsc would catch it later (TS2322), but with a noisier signal buried in compiler output. The static layer surfaces it as a clean per-component report.",
+  "baseline_comparison": {
+    "tsc": "WOULD CATCH — TS2322 if tsconfig is present and the file compiles. Often deferred in agent-generated code until a build runs.",
+    "eslint": "PASS — vanilla eslint doesn't track prop types across components.",
+    "eslint-plugin-react": "PARTIAL — react/prop-types runs against PropTypes (PropTypes-only); doesn't validate TypeScript interface usage.",
+    "raw_llm_critique": "UNRELIABLE — may or may not connect the consumer's prop name to the component's declared interface.",
+    "manual_QA": "Catches when the component first renders and crashes."
+  }
+}

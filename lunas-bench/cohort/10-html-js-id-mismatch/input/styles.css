@@ -1,0 +1,12 @@
+:root {
+  --primary: #10B981;
+  --bg: #F9FAFB;
+  --fg: #111827;
+}
+
+body { font-family: Inter, system-ui, sans-serif; background: var(--bg); color: var(--fg); margin: 0; padding: 2rem; }
+body[data-theme='dark'] { background: #0F172A; color: #E5E7EB; }
+
+.card { max-width: 28rem; margin: 0 auto; padding: 2rem; background: white; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.08); }
+.people-row { display: flex; gap: 0.5rem; align-items: center; }
+button.primary { background: var(--primary); color: white; border: 0; padding: 0.75rem 1rem; border-radius: 6px; }

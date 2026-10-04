@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "archetype": "finance-utility",
+  "intent": "A small Python helper that computes the future value of a deposit under WEEKLY compounding (interest applied each week). Includes pytest tests with two reference scenarios.",
+  "stack": {
+    "language": "Python 3.11"
+  },
+  "brand": {
+    "has_logo": false,
+    "palette": {
+      "primary":   "",
+      "secondary": "",
+      "accent":    "",
+      "bg":        "",
+      "fg":        ""
+    },
+    "fonts": {
+      "heading": "",
+      "body":    ""
+    },
+    "tone": ["factual"]
+  },
+  "philosophy": {
+    "id": "",
+    "label": "",
+    "rules": {}
+  },
+  "density": "",
+  "motion": "",
+  "features": [
+    "compound interest weekly across N years",
+    "round result to 2 decimal places"
+  ],
+  "notes": "Standard signature: compound_interest(principal: float, annual_rate: float, years: int) -> float. The annual_rate must be divided by 52 and compounded weekly (so the formula is principal * (1 + annual_rate/52) ** (52 * years))."
+}

@@ -1,0 +1,64 @@
+/* Notes — styles.
+ *
+ * The generated palette ships a charcoal background by default. CSS
+ * variables drive every surface color so a theme swap would be a
+ * one-line variable flip.
+ */
+
+:root {
+  --surface-1: #0F172A;
+  --surface-2: #1E293B;
+  --text-1:    #F1F5F9;
+  --text-2:    #94A3B8;
+  --accent:    #F59E0B;
+  --border:    #334155;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--surface-1);
+  color: var(--text-1);
+  font-family: Inter, system-ui, sans-serif;
+  min-height: 100vh;
+}
+
+.header {
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid var(--border);
+}
+.header h1 { margin: 0; font-weight: 600; }
+
+.composer {
+  display: flex;
+  gap: 0.75rem;
+  padding: 1.5rem 2rem;
+  max-width: 48rem;
+  margin: 0 auto;
+}
+.composer textarea {
+  flex: 1;
+  min-height: 6rem;
+  padding: 0.75rem;
+  background: var(--surface-2);
+  color: var(--text-1);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  resize: vertical;
+  font: inherit;
+}
+.composer button {
+  align-self: flex-start;
+  padding: 0.625rem 1.25rem;
+  background: var(--accent);
+  color: var(--surface-1);
+  border: 0;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.list { max-width: 48rem; margin: 0 auto; padding: 0 2rem 2rem; }
+.list ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+.list li { padding: 0.75rem 1rem; background: var(--surface-2); border-radius: 6px; }

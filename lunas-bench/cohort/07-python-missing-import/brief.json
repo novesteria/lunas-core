@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "archetype": "api-backend",
+  "intent": "A small FastAPI app with one endpoint that returns the current time. Includes pytest tests.",
+  "stack": {
+    "backend": "FastAPI",
+    "language": "Python 3.11"
+  },
+  "brand": {
+    "has_logo": false,
+    "palette": {
+      "primary":   "",
+      "secondary": "",
+      "accent":    "",
+      "bg":        "",
+      "fg":        ""
+    },
+    "fonts": {
+      "heading": "",
+      "body":    ""
+    },
+    "tone": ["factual"]
+  },
+  "philosophy": {
+    "id": "",
+    "label": "",
+    "rules": {}
+  },
+  "density": "",
+  "motion": "",
+  "features": [
+    "GET /time endpoint returns ISO timestamp",
+    "endpoint waits 1 second before returning (simulates work)"
+  ],
+  "notes": "Standard FastAPI project structure. src/api.py defines the endpoint, tests/test_api.py validates the response shape."
+}

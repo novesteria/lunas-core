@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "passed": false,
+  "failed_layer": "router_prefix_consistency",
+  "failed_stack": "python",
+  "deterministic_override_expected": false,
+  "details_contains": {
+    "conflicts_landing_path": "/api/api",
+    "declared_prefix": "/api",
+    "inclusion_prefix": "/api"
+  },
+  "rationale": "`app/api/auth.py` declares `router = APIRouter(prefix='/api')`. `main.py` then does `app.include_router(auth_router, prefix='/api')`. Both files compile, all imports resolve, pytest (if present) running happy-path mocks against the wrong URL would still pass. Only a live HTTP request reveals that endpoints actually land at `/api/api/auth/login` and `/api/api/auth/register` — every real client returns 404. `router_prefix_consistency` walks the AST: pass 1 records `(file, router_var) → declared_prefix` for every `APIRouter(prefix=...)`; pass 2 cross-references every `*.include_router(arg, prefix=...)` call through the file's alias map back to the originating declaration. Same prefix on both sides → flagged conflict.",
+  "baseline_comparison": {
+    "pylint": "PASS — both files are valid Python with idiomatic FastAPI usage.",
+    "ruff": "PASS — same.",
+    "mypy": "PASS — types align (APIRouter accepts a prefix kwarg, include_router accepts prefix kwarg).",
+    "pytest_with_mocks": "USUALLY PASS — unit tests that mock the FastAPI client or test handlers directly never hit the prefix arithmetic. Bug surfaces only with live HTTP.",
+    "raw_llm_critique": "INCONSISTENT — sometimes notices double-prefix, often interprets as 'careful layering' and approves.",
+    "live_HTTP": "FAIL — every request returns 404. But this requires running the server, which the validator pipeline avoids."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "archetype": "dashboard",
+  "brand": {
+    "has_logo": false,
+    "palette": {
+      "primary":   "#2A5252",
+      "secondary": "#476B57",
+      "accent":    "#B68A3E",
+      "bg":        "#E9ECE6",
+      "fg":        "#1F2421"
+    },
+    "fonts": {
+      "heading": "Lora",
+      "body":    "Inter"
+    },
+    "tone": ["professional", "warm", "technical"]
+  },
+  "philosophy": {
+    "id": "editorial",
+    "label": "Editorial",
+    "rules": {
+      "max_colors": 5,
+      "typography_style": "serif-heading-sans-body",
+      "spacing_scale": "spacious",
+      "decoration": "minimal"
+    }
+  },
+  "density": "spacious",
+  "motion":  "subtle",
+  "notes":   "Forest-green editorial dashboard for a content team."
+}

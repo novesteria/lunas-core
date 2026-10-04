@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "check_type": "import_case_consistency",
+  "passed": false,
+  "deterministic_override_expected": false,
+  "expected_failures": [
+    "import 'user_service' from './userService' — userService.ts exports 'userService'",
+    "import 'Usercard' from './userService' — userService.ts exports 'UserCard'"
+  ],
+  "rationale": "code/main.ts imports { user_service } and { Usercard } from './userService' but userService.ts exports userService (camelCase) and UserCard (PascalCase). Both are case-permutation mismatches that the new _check_import_case_consistency layer should flag. This is a different check from design-fidelity — the runner routes this case via expected.check_type = 'import_case_consistency' to the integration validator's deterministic pass."
+}

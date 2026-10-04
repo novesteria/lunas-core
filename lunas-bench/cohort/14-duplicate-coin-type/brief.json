@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "archetype": "info-display",
+  "intent": "A crypto portfolio page that lists three coins (BTC, ETH, SOL) with their symbol, name, current price, and 24h change. Single page, dark theme.",
+  "stack": {
+    "frontend": "React 18",
+    "language": "TypeScript",
+    "build_tool": "Vite"
+  },
+  "brand": {
+    "has_logo": false,
+    "palette": { "primary": "#0EA5E9", "secondary": "#0369A1", "accent": "#F59E0B", "bg": "#0F172A", "fg": "#F1F5F9" },
+    "fonts":   { "heading": "Inter", "body": "Inter" },
+    "tone":    ["technical"]
+  },
+  "philosophy": { "id": "editorial", "label": "Editorial", "rules": { "max_colors": 5 } },
+  "density": "compact",
+  "motion": "subtle",
+  "features": [
+    "list three coins with symbol, name, price, change_24h",
+    "format price with two decimals",
+    "format change with sign and %"
+  ],
+  "notes": "Types live in src/types.ts. Components consume the typed shape directly — keep ONE canonical Coin interface."
+}

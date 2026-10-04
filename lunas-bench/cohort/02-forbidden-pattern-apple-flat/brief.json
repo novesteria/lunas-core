@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "archetype": "list-detail",
+  "brand": {
+    "has_logo": false,
+    "palette": {
+      "primary":   "#0071E3",
+      "secondary": "#86868B",
+      "accent":    "#FF3B30",
+      "bg":        "#FFFFFF",
+      "fg":        "#1D1D1F"
+    },
+    "fonts": {
+      "heading": "Inter",
+      "body":    "Inter"
+    },
+    "tone": ["minimal", "professional", "calm"]
+  },
+  "philosophy": {
+    "id": "apple-flat",
+    "label": "Apple Flat",
+    "rules": {
+      "max_colors": 4,
+      "typography_style": "sans-only-tight-tracking",
+      "spacing_scale": "moderate",
+      "decoration": "absent",
+      "motion": "subtle"
+    }
+  },
+  "density": "moderate",
+  "motion":  "subtle",
+  "notes":   "Apple-style notes app. NO gradients, NO glows, NO backdrop blur."
+}

@@ -1,0 +1,61 @@
+/* Brief honored end-to-end: every palette hex appears, both fonts imported,
+   no gradients/glows/backdrop blur (Editorial allows minimal decoration only). */
+
+:root {
+  --primary:   #2A5252;
+  --secondary: #476B57;
+  --accent:    #B68A3E;
+  --bg:        #E9ECE6;
+  --fg:        #1F2421;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'Inter', -apple-system, sans-serif;
+  line-height: 1.7;
+}
+
+header {
+  padding: 32px 64px;
+  border-bottom: 1px solid var(--secondary);
+}
+
+nav a {
+  margin-right: 24px;
+  color: var(--fg);
+  text-decoration: none;
+  font-family: 'Lora', Georgia, serif;
+  font-weight: 500;
+}
+
+nav a.brand { color: var(--primary); font-size: 24px; }
+
+main {
+  max-width: 720px;
+  margin: 64px auto;
+  padding: 0 32px;
+}
+
+article h1 {
+  font-family: 'Lora', Georgia, serif;
+  font-weight: 600;
+  color: var(--primary);
+  font-size: 44px;
+  letter-spacing: -0.01em;
+}
+
+article .lede {
+  color: var(--secondary);
+  font-size: 19px;
+}
+
+article p {
+  font-size: 18px;
+}
+
+article a {
+  color: var(--accent);
+  text-decoration: underline;
+}

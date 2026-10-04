@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "passed": true,
+  "failed_layer": null,
+  "failed_stack": null,
+  "deterministic_override_expected": false,
+  "expected_layer_outcomes": {
+    "python_imports":             "passed",
+    "python_completeness":        "passed",
+    "python_deps_completeness":   "passed",
+    "router_prefix_consistency":  "passed",
+    "import_case_consistency":    "passed",
+    "pytest":                     "passed",
+    "design_fidelity":            "skipped (no LLM client)",
+    "feature_coverage":           "skipped (no LLM client)",
+    "node_layers":                "skipped (stack mismatch)",
+    "static_html_layers":         "skipped (stack mismatch)"
+  },
+  "rationale": "This is the Python equivalent of the Node clean-pass case (03 in v1). A minimal FastAPI service with one `/health` endpoint, one happy-path pytest test, and idiomatic project layout. Every Python-applicable layer in the pipeline runs and passes: imports resolve, no stub bodies, all third-party imports declared in requirements.txt, no APIRouter double-mount (no prefix at all in this case), import casing matches everywhere, pytest collects and runs the test green. The bench's purpose for this case: prove that the validator doesn't false-FAIL on healthy code. A clean run produces a clean PASS verdict; any failure in this case indicates a regression in one of the layers.",
+  "baseline_comparison": {
+    "pylint": "PASS",
+    "ruff": "PASS",
+    "mypy": "PASS",
+    "pytest_direct": "PASS",
+    "Lunas": "PASS — all 6 applicable layers report passed; the rest are correctly skipped for stack mismatch or because LLM is disabled."
+  }
+}

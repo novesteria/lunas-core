@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "passed": false,
+  "failed_layer": "design_fidelity",
+  "failed_stack": "static_html",
+  "deterministic_override_expected": false,
+  "calibration": {
+    "model": "claude-opus-4-7",
+    "captured_on": "2026-05-21",
+    "design_fidelity": {
+      "verdict": "failed",
+      "overall_score": 4,
+      "dimensions": {
+        "palette": 2,
+        "philosophy": 8,
+        "density_motion": 5,
+        "tone_microcopy": 4
+      },
+      "weak_dimension": "palette (2/10)",
+      "note": "Brief specifies a LIGHT palette (#FFFFFF bg, #111827 fg, #3B82F6 primary). The code ships a charcoal-by-default palette. The LLM caps palette at 2/10 for the inverted scheme, dropping overall below the pass threshold."
+    },
+    "feature_coverage": {
+      "verdict": "failed",
+      "missing_features": [
+        "light/dark mode toggle",
+        "The dark-mode toggle is a primary feature, not a nice-to-have"
+      ],
+      "stage1_markers_absent": ["toggle", "light", "dark"],
+      "llm_status": "missing",
+      "llm_overrides": 0,
+      "note": "Both Stage 1 and the LLM judge identify the missing toggle. The LLM picks up the JS comment that admits the implementation was skipped, so no rubber-stamp override is needed for the case to FAIL."
+    }
+  },
+  "rationale": "Two layers fail. `design_fidelity` reports overall 4/10 with palette weak at 2/10 — the brief asks for a light palette but the code ships dark by default. `feature_coverage` reports the `light/dark mode toggle` feature missing: Stage 1 finds no occurrences of `toggle`, `light`, or `dark` in the code blob; the LLM independently identifies the absent toggle UI (citing the JS comment that admits 'no theme button was added'). `llm_overrides` is 0 — the rubber-stamp guard is in place but did not need to fire because the model correctly identified the gap."
+}

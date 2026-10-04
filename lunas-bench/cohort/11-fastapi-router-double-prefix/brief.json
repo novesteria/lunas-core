@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "archetype": "api-backend",
+  "intent": "A small FastAPI auth service. Endpoints under /api/auth/* — POST /api/auth/login and POST /api/auth/register. Returns JWT-shaped JSON, no real persistence.",
+  "stack": {
+    "backend": "FastAPI",
+    "language": "Python 3.11"
+  },
+  "brand": {
+    "has_logo": false,
+    "palette": { "primary": "", "secondary": "", "accent": "", "bg": "", "fg": "" },
+    "fonts":   { "heading": "", "body": "" },
+    "tone":    ["factual"]
+  },
+  "philosophy": { "id": "", "label": "", "rules": {} },
+  "density": "",
+  "motion": "",
+  "features": [
+    "POST /api/auth/login accepts email + password, returns token",
+    "POST /api/auth/register accepts email + password, returns token"
+  ],
+  "notes": "Modular layout: app/api/auth.py defines the router under prefix '/api'; main.py mounts it on the FastAPI app. ONE prefix declaration is required — picking it on the router OR on include_router(), not both."
+}

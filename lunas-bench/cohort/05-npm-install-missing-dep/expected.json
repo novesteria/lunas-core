@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "passed": false,
+  "failed_layer": "npm_install",
+  "failed_stack": "node",
+  "deterministic_override_expected": false,
+  "stderr_contains": [
+    "ERESOLVE",
+    "react@\"99.0.0\""
+  ],
+  "stdout_excludes": [
+    "vite",
+    "tsc"
+  ],
+  "rationale": "package.json declares react@99.0.0 — a version that does not exist on the npm registry. npm install can find no matching version, so dependency resolution short-circuits with ERESOLVE: the explicitly-requested react@99.0.0 cannot satisfy react-dom's peer requirement of react@^18.x. The npm_install layer surfaces the failure; downstream layers (tsc, design_fidelity, feature_coverage) are not reached because the install never completed.",
+  "baseline_comparison": {
+    "eslint": "Not detected — eslint operates on source code, not package.json registry resolution.",
+    "raw_llm_critique": "May flag the unusual version as suspicious, but does not actually attempt to install — cannot verify the package is missing from the registry.",
+    "gpt4_critique": "Same as raw_llm_critique — code review without execution.",
+    "static_tools": "npm audit / npm outdated would not catch this (those work on installed packages). Only npm install itself does."
+  }
+}

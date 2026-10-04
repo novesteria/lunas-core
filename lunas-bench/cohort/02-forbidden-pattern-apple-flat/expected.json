@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "passed": false,
+  "min_capped_dimensions": {
+    "philosophy": 4
+  },
+  "deterministic_override_expected": true,
+  "expected_forbidden_pattern_matches": [
+    "linear-gradient",
+    "box-shadow:\\s*0\\s+0",
+    "backdrop-filter",
+    "text-shadow"
+  ],
+  "rationale": "Brief is apple-flat which forbids all four decoration patterns. Code uses every single one. Palette hex codes are correct (so palette dimension may pass), but philosophy must be capped due to forbidden-pattern matches."
+}

@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "passed": false,
+  "failed_layer": "tsc",
+  "failed_stack": "node",
+  "deterministic_override_expected": false,
+  "stdout_contains": [
+    "error TS2339",
+    "Property 'fullName' does not exist",
+    "UserCard.tsx"
+  ],
+  "rationale": "`src/types.ts` declares `interface UserProfile { name: string; … }` but `src/UserCard.tsx` reads `user.fullName`. The TypeScript compiler produces TS2339 (Property does not exist on type). npm_install succeeds (deps are all real, peer-resolvable versions); the failure surfaces only when tsc walks the AST and checks property access against declared types. Earlier deterministic layers (node_deps_completeness, named_import_consistency, react_prop_consistency) all pass because the JSX prop matches the declared component Props — the bug is one level deeper, in how the component reads the user object.",
+  "baseline_comparison": {
+    "eslint": "Partial — vanilla eslint doesn't run the TypeScript checker; @typescript-eslint/parser would catch this only with type-aware rules enabled (most teams don't).",
+    "raw_llm_critique": "May catch on careful read, but no execution; LLM judgment of types-at-distance is unreliable.",
+    "gpt4_critique": "Same as raw_llm_critique.",
+    "static_tools": "tsc itself is the ground truth — that's what Lunas runs. Anything that defers tsc misses this."
+  }
+}

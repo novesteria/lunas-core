@@ -1,0 +1,14 @@
+:root {
+  --primary: #1F2937;
+  --accent:  #3B82F6;
+  --bg:      #FFFFFF;
+  --fg:      #111827;
+}
+
+body { margin: 0; padding: 0; background: var(--bg); color: var(--fg); font-family: Inter, system-ui, sans-serif; }
+
+.container { max-width: 60rem; margin: 0 auto; padding: 2rem; }
+
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid #E5E7EB; }
+th { cursor: pointer; user-select: none; color: var(--primary); background: #F9FAFB; }

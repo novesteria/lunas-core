@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "archetype": "api-backend",
+  "intent": "A minimal FastAPI service exposing a /health endpoint. Returns 200 with the app version and current ISO timestamp. Includes pytest tests for the happy path.",
+  "stack": {
+    "backend": "FastAPI",
+    "language": "Python 3.11"
+  },
+  "brand": {
+    "has_logo": false,
+    "palette": { "primary": "", "secondary": "", "accent": "", "bg": "", "fg": "" },
+    "fonts":   { "heading": "", "body": "" },
+    "tone":    ["factual"]
+  },
+  "philosophy": { "id": "", "label": "", "rules": {} },
+  "density": "",
+  "motion": "",
+  "features": [
+    "GET /health returns 200",
+    "response includes app version field",
+    "response includes ISO timestamp field"
+  ],
+  "notes": "Standard FastAPI layout: app/__init__.py, app/main.py with the /health route, tests/ with one happy-path test using fastapi.testclient."
+}

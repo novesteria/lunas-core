@@ -1,0 +1,52 @@
+/* Brief: apple-flat philosophy. Code violates by adding gradients,
+   glow shadows, backdrop blur, and text-shadow — exactly what the
+   philosophy forbids. The hex codes are correct, but decoration is wrong. */
+
+:root {
+  --primary: #0071E3;
+  --secondary: #86868B;
+  --accent: #FF3B30;
+  --bg: #FFFFFF;
+  --fg: #1D1D1F;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+.hero {
+  padding: 64px 48px;
+  background: linear-gradient(135deg, #0071E3 0%, #5856D6 100%);
+  color: white;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin: 0;
+  text-shadow: 0 4px 16px rgba(255, 255, 255, 0.6);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 32px;
+  padding: 32px;
+}
+
+.sidebar {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.note {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 0 32px rgba(0, 113, 227, 0.4);
+}

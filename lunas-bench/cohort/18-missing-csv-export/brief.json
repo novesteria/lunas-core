@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "archetype": "info-display",
+  "intent": "A user-list dashboard. Shows users in a sortable table (name, email, signup date). Includes a button to export the current view to CSV.",
+  "stack": {
+    "html": "single index.html",
+    "language": "JavaScript (vanilla)"
+  },
+  "brand": {
+    "has_logo": false,
+    "palette": {
+      "primary":   "#1F2937",
+      "secondary": "#374151",
+      "accent":    "#3B82F6",
+      "bg":        "#FFFFFF",
+      "fg":        "#111827"
+    },
+    "fonts": {
+      "heading": "Inter",
+      "body":    "Inter"
+    },
+    "tone": ["functional", "professional"]
+  },
+  "philosophy": {
+    "id": "",
+    "label": "",
+    "rules": {}
+  },
+  "density": "compact",
+  "motion": "subtle",
+  "features": [
+    "user table with name, email, signup date columns",
+    "sort by clicking column headers",
+    "export current view to CSV via a download button"
+  ],
+  "notes": "Vanilla HTML + JS. The CSV export is a primary feature, not a nice-to-have. Pattern: build a CSV string from the rendered rows, create a Blob, anchor.download = 'users.csv'."
+}

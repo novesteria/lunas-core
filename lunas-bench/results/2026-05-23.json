@@ -1,0 +1,224 @@
+{
+  "timestamp_utc": "2026-05-23T04:56:26.456880Z",
+  "use_llm": true,
+  "total": 20,
+  "counts": {
+    "pass": 20,
+    "fail": 0,
+    "skip": 0,
+    "error": 0
+  },
+  "rows": [
+    {
+      "case": "01-palette-substitution",
+      "status": "pass",
+      "actual_passed": false,
+      "duration_seconds": 8.61,
+      "problems": [],
+      "failed_layers": [
+        "design_fidelity"
+      ]
+    },
+    {
+      "case": "02-forbidden-pattern-apple-flat",
+      "status": "pass",
+      "actual_passed": false,
+      "duration_seconds": 9.55,
+      "problems": [],
+      "failed_layers": [
+        "design_fidelity"
+      ]
+    },
+    {
+      "case": "03-clean-pass",
+      "status": "pass",
+      "actual_passed": true,
+      "duration_seconds": 9.64,
+      "problems": [],
+      "failed_layers": []
+    },
+    {
+      "case": "04-import-case-mismatch",
+      "status": "pass",
+      "actual_passed": false,
+      "duration_seconds": 0.0,
+      "problems": [],
+      "failed_layers": []
+    },
+    {
+      "case": "05-npm-install-missing-dep",
+      "status": "pass",
+      "actual_passed": false,
+      "duration_seconds": 14.7,
+      "problems": [],
+      "failed_layers": [
+        "npm_install"
+      ]
+    },
+    {
+      "case": "06-typescript-compile-error",
+      "status": "pass",
+      "actual_passed": false,
+      "duration_seconds": 17.42,
+      "problems": [],
+      "failed_layers": [
+        "tsc",
+        "design_fidelity",
+        "feature_coverage"
+      ]
+    },
+    {
+      "case": "07-python-missing-import",
+      "status": "pass",
+      "actual_passed": false,
+      "duration_seconds": 11.33,
+      "problems": [],
+      "failed_layers": [
+        "pytest",
+        "design_fidelity",
+        "feature_coverage"
+      ]
+    },
+    {
+      "case": "08-pytest-assertion-fail",
+      "status": "pass",
+      "actual_passed": false,
+      "duration_seconds": 11.12,
+      "problems": [],
+      "failed_layers": [
+        "pytest",
+        "design_fidelity",
+        "feature_coverage"
+      ]
+    },
+    {
+      "case": "09-node-deps-missing",
+      "status": "pass",
+      "actual_passed": false,
+      "duration_seconds": 10.38,
+      "problems": [],
+      "failed_layers": [
+        "node_deps_completeness"
+      ]
+    },
+    {
+      "case": "10-html-js-id-mismatch",
+      "status": "pass",
+      "actual_passed": false,
+      "duration_seconds": 13.64,
+      "problems": [],
+      "failed_layers": [
+        "html_js_id_parity",
+        "design_fidelity",
+        "feature_coverage"
+      ]
+    },
+    {
+      "case": "11-fastapi-router-double-prefix",
+      "status": "pass",
+      "actual_passed": false,
+      "duration_seconds": 34.05,
+      "problems": [],
+      "failed_layers": [
+        "router_prefix_consistency",
+        "feature_coverage"
+      ]
+    },
+    {
+      "case": "12-react-prop-mismatch",
+      "status": "pass",
+      "actual_passed": false,
+      "duration_seconds": 53.84,
+      "problems": [],
+      "failed_layers": [
+        "react_prop_consistency",
+        "design_fidelity",
+        "feature_coverage"
+      ]
+    },
+    {
+      "case": "13-npm-ignore-scripts",
+      "status": "pass",
+      "actual_passed": true,
+      "duration_seconds": 33.11,
+      "problems": [],
+      "failed_layers": []
+    },
+    {
+      "case": "14-duplicate-coin-type",
+      "status": "pass",
+      "actual_passed": false,
+      "duration_seconds": 39.52,
+      "problems": [],
+      "failed_layers": [
+        "duplicate_type_declarations",
+        "design_fidelity",
+        "feature_coverage"
+      ]
+    },
+    {
+      "case": "15-hook-return-drift",
+      "status": "pass",
+      "actual_passed": false,
+      "duration_seconds": 63.25,
+      "problems": [],
+      "failed_layers": [
+        "hook_destructure_consistency",
+        "design_fidelity",
+        "feature_coverage"
+      ]
+    },
+    {
+      "case": "16-typography-substitution",
+      "status": "pass",
+      "actual_passed": false,
+      "duration_seconds": 13.08,
+      "problems": [],
+      "failed_layers": [
+        "design_fidelity",
+        "feature_coverage"
+      ]
+    },
+    {
+      "case": "17-density-violation",
+      "status": "pass",
+      "actual_passed": false,
+      "duration_seconds": 15.98,
+      "problems": [],
+      "failed_layers": [
+        "design_fidelity",
+        "feature_coverage"
+      ]
+    },
+    {
+      "case": "18-missing-csv-export",
+      "status": "pass",
+      "actual_passed": false,
+      "duration_seconds": 21.5,
+      "problems": [],
+      "failed_layers": [
+        "design_fidelity",
+        "feature_coverage"
+      ]
+    },
+    {
+      "case": "19-missing-dark-toggle",
+      "status": "pass",
+      "actual_passed": false,
+      "duration_seconds": 39.16,
+      "problems": [],
+      "failed_layers": [
+        "design_fidelity",
+        "feature_coverage"
+      ]
+    },
+    {
+      "case": "20-python-clean-pass",
+      "status": "pass",
+      "actual_passed": true,
+      "duration_seconds": 13.49,
+      "problems": [],
+      "failed_layers": []
+    }
+  ]
+}

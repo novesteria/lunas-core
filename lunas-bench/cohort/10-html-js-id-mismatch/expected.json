@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "passed": false,
+  "failed_layer": "html_js_id_parity",
+  "failed_stack": "static_html",
+  "deterministic_override_expected": false,
+  "details_contains": {
+    "missing_ids": ["decrement-btn", "theme-toggle"]
+  },
+  "rationale": "The HTML declares `id=\"theme-switch\"` and `id=\"people-decrement\"`. The JS calls `getElementById('theme-toggle')` and `getElementById('decrement-btn')`. Both files are individually valid: HTML parses cleanly, JS is syntactically fine, all interactive elements have id attributes, JS has plenty of `addEventListener` calls (so the `interactivity` layer also passes). The bug is the SEAM: HTML and JS were generated independently and settled on different naming conventions. At runtime, `getElementById` returns `null`, the listener is attached to a phantom node, and clicking does nothing. The `html_js_id_parity` layer cross-references every `#id` the JS hooks against the ids the HTML declares.",
+  "baseline_comparison": {
+    "eslint": "PARTIAL — eslint-plugin-html exists but cross-file id resolution is not its strength. No common preset enables it.",
+    "html_validator": "PASS — both files are individually valid HTML/JS.",
+    "interactivity_count_check": "PASS — JS has 4 event bindings, HTML has 5 interactive elements. Counting alone doesn't catch which ids they hook.",
+    "node_check": "PASS — JS parses cleanly.",
+    "raw_llm_critique": "UNRELIABLE — sometimes catches when files are small enough to keep in working memory, often misses.",
+    "manual_QA": "Catches on first click — but the validator pipeline is supposed to obviate manual QA for routine bugs."
+  }
+}

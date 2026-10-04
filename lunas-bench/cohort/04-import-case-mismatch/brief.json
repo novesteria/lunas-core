@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "archetype": "dashboard",
+  "brand": {
+    "has_logo": false,
+    "palette": {
+      "primary":   "#3B4252",
+      "secondary": "#4C566A",
+      "accent":    "#88C0D0",
+      "bg":        "#ECEFF4",
+      "fg":        "#2E3440"
+    },
+    "fonts": {
+      "heading": "Lora",
+      "body":    "Inter"
+    },
+    "tone": ["professional", "calm", "technical"]
+  },
+  "philosophy": {
+    "id": "editorial",
+    "label": "Editorial",
+    "rules": {
+      "max_colors": 5,
+      "typography_style": "serif-heading-sans-body",
+      "spacing_scale": "spacious",
+      "decoration": "minimal"
+    }
+  },
+  "density": "spacious",
+  "motion":  "subtle",
+  "notes":   "Generic editorial dashboard. The brief itself is incidental — what matters in this case is the deliberate import case mismatch in code/."
+}

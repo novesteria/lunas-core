@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "archetype": "editorial-blog",
+  "intent": "An editorial blog landing page — masthead, three article cards, simple footer. Quiet, considered typography is essential; this brand is built on calm reading rhythm.",
+  "stack": {
+    "html": "single index.html",
+    "language": "JavaScript (vanilla)"
+  },
+  "brand": {
+    "has_logo": false,
+    "palette": {
+      "primary":   "#1F3D2E",
+      "secondary": "#3A5C45",
+      "accent":    "#B68A3E",
+      "bg":        "#F4F1EA",
+      "fg":        "#1A1A1A"
+    },
+    "fonts": {
+      "heading": "Lora",
+      "body":    "Inter"
+    },
+    "tone": ["calm", "editorial", "considered"]
+  },
+  "philosophy": {
+    "id": "editorial",
+    "label": "Editorial",
+    "rules": {
+      "max_colors": 5,
+      "typography_style": "serif heading + sans body",
+      "spacing_scale": "spacious",
+      "decoration": "minimal"
+    }
+  },
+  "density": "spacious",
+  "motion": "subtle",
+  "features": [
+    "header with site name in Lora",
+    "three article cards (title, excerpt, byline)",
+    "footer with copyright"
+  ],
+  "notes": "Critical: this brand's voice IS its typography. Lora for headings, Inter for body. The palette is forest-green editorial — already deliberately picked. If typography misses, the page reads as generic SaaS regardless of palette."
+}

@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "archetype": "api-client",
+  "intent": "A tiny Node.js script that fetches a public REST endpoint and prints the JSON payload. Built to demonstrate a clean HTTP-client wrapper.",
+  "stack": {
+    "language": "JavaScript (ESM)",
+    "runtime": "Node.js 20"
+  },
+  "brand": {
+    "has_logo": false,
+    "palette": {
+      "primary":   "",
+      "secondary": "",
+      "accent":    "",
+      "bg":        "",
+      "fg":        ""
+    },
+    "fonts": {
+      "heading": "",
+      "body":    ""
+    },
+    "tone": ["factual"]
+  },
+  "philosophy": {
+    "id": "",
+    "label": "",
+    "rules": {}
+  },
+  "density": "",
+  "motion": "",
+  "features": [
+    "fetch a single URL via axios",
+    "print the response.data as JSON"
+  ],
+  "notes": "Single-file script under src/fetch.js. Uses axios for HTTP. No tests, no build step."
+}

@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "passed": false,
+  "failed_layer": "design_fidelity",
+  "failed_stack": "static_html",
+  "deterministic_override_expected": true,
+  "calibration": {
+    "model": "claude-opus-4-7",
+    "captured_on": "2026-05-21",
+    "summary": "Design fidelity forced-failed by deterministic evidence override",
+    "overall_score": 7,
+    "dimensions": {
+      "palette": 9,
+      "philosophy_capped_to": 4,
+      "density_motion": 7,
+      "tone_microcopy": 9
+    },
+    "forced_fail": true,
+    "override_reason": "required font(s) Lora, Inter NOT FOUND in code"
+  },
+  "rationale": "The brief specifies Lora for headings and Inter for body. The generated styles.css uses `font-family: system-ui, sans-serif` everywhere; neither font name appears anywhere in the input. The LLM judge scores the layout favorably (palette 9, density 7, tone 9) and gives philosophy 5 since typography is the only visible miss. The deterministic font search then fires: both required fonts are absent, philosophy is capped to 4, `forced_fail` is set. The overall score gets recomputed to 7 from the capped dimensions, but `forced_fail` trumps the numeric threshold and the layer reports FAIL."
+}

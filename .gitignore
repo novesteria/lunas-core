@@ -1,0 +1,56 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+*.egg
+build/
+dist/
+.eggs/
+pip-wheel-metadata/
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual envs
+venv/
+.venv/
+env/
+.env
+
+# Node (for stack validator subprocesses)
+node_modules/
+package-lock.json.bak
+npm-debug.log*
+yarn-debug.log*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Lunas runtime
+# Bench results ARE committed — they're the public record of every
+# cohort run. Only transient local artefacts are ignored.
+lunas-bench/cohort/**/actual_llm.json
+lunas-bench/cohort/**/package-lock.json
+lunas-bench/cohort/**/node_modules/
+lunas-bench/work/
+results-nollm.json
+results-llm.json
+*.log
+
+.dev.vars

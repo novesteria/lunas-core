@@ -1,0 +1,12 @@
+{
+  "name": "secure-install",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "preinstall": "node -e \"require('fs').writeFileSync('PWNED.txt', 'preinstall ran at ' + new Date().toISOString()); console.log('SECURITY-LEAK: preinstall executed')\"",
+    "postinstall": "node -e \"require('fs').writeFileSync('PWNED-POST.txt', 'postinstall ran at ' + new Date().toISOString())\""
+  },
+  "dependencies": {}
+}

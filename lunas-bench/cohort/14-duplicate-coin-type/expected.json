@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "passed": false,
+  "failed_layer": "duplicate_type_declarations",
+  "failed_stack": "node",
+  "deterministic_override_expected": false,
+  "details_contains": {
+    "type_name": "Coin",
+    "shape_count": 2,
+    "distinct_files": 2,
+    "fields_canonical": ["change_24h", "id", "name", "price", "symbol"],
+    "fields_partial": ["name", "value"]
+  },
+  "rationale": "`src/types.ts` declares the canonical `interface Coin { id, symbol, name, price, change_24h }`. `src/components/CoinRow.tsx` REDECLARES `interface Coin { name, value }` locally — a totally different shape. tsc TS2300 would catch this ONLY if both decls were in the same scope; here they're in different files (different scopes), so tsc lets it through. The consumer uses the partial local Coin, the API delivers the full canonical Coin, and the symbol / price / change_24h fields are silently dropped — the user sees blank cells where prices should be. This is the classic duplicate-type bug: two sources wrote two definitions for the same conceptual type, neither cross-referenced the other. `duplicate_type_declarations` walks every interface/type declaration, groups by name, and flags any name with >=2 distinct member-sets across different files (TS interface merging is excluded — same shape across files is fine).",
+  "baseline_comparison": {
+    "tsc": "PASS — TS2300 only fires for same-scope duplicates. Different files, different scopes, both compile.",
+    "pylint_jsequiv": "N/A — this is a TS-specific failure mode.",
+    "eslint": "PARTIAL — there are some plugins that look for type duplication, but none catch the SHAPE divergence; they only catch literal name reuse.",
+    "raw_llm_critique": "INCONSISTENT — sometimes spots the redeclaration, often reads as 'careful local typing'.",
+    "manual_QA": "Catches when the user sees blank cells — but it's silent on first review and easy to miss in code review."
+  }
+}

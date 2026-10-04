@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "archetype": "form-heavy",
+  "intent": "A single-page tip calculator. Users enter a bill amount and a number of people; the UI shows tip-per-person and total-per-person. Also has a light/dark theme toggle.",
+  "stack": {
+    "language": "JavaScript (vanilla)",
+    "html": "single index.html"
+  },
+  "brand": {
+    "has_logo": false,
+    "palette": {
+      "primary":   "#10B981",
+      "secondary": "#065F46",
+      "accent":    "#FBBF24",
+      "bg":        "#F9FAFB",
+      "fg":        "#111827"
+    },
+    "fonts": {
+      "heading": "Inter",
+      "body":    "Inter"
+    },
+    "tone": ["functional", "clean"]
+  },
+  "philosophy": {
+    "id": "editorial",
+    "label": "Editorial",
+    "rules": {
+      "max_colors": 4,
+      "typography_style": "sans-serif",
+      "spacing_scale": "comfortable",
+      "decoration": "minimal"
+    }
+  },
+  "density": "comfortable",
+  "motion": "subtle",
+  "features": [
+    "bill amount input",
+    "people count input with +/- buttons",
+    "tip-per-person and total-per-person display",
+    "light/dark theme toggle"
+  ],
+  "notes": "Vanilla HTML + JS, no framework. JS attaches handlers via getElementById / querySelector by id."
+}

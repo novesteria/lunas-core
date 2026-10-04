@@ -1,0 +1,84 @@
+[build-system]
+requires = ["hatchling>=1.21"]
+build-backend = "hatchling.build"
+
+[project]
+name = "lunas-validator"
+dynamic = ["version"]
+description = "A deterministic validator for AI-generated code."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "Apache-2.0" }
+authors = [
+    { name = "Novesteria", email = "hello@novesteria.com" }
+]
+keywords = ["ai", "code-generation", "validation", "static-analysis", "ast", "llm"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Quality Assurance",
+    "Topic :: Software Development :: Testing",
+]
+
+dependencies = [
+    # No runtime deps for the core validator yet. Built-in stdlib only.
+    # The anthropic SDK is an optional runtime dep of AnthropicClient
+    # (see `[project.optional-dependencies].anthropic` below).
+]
+
+[project.optional-dependencies]
+anthropic = [
+    "anthropic>=0.34",
+]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+    "ruff>=0.4",
+    "mypy>=1.10",
+    "anthropic>=0.34",
+]
+
+[project.scripts]
+lunas = "lunas_cli.__main__:main"
+# the original command name, kept for one release so existing CI keeps working
+aegis = "lunas_cli.__main__:main"
+
+[project.urls]
+homepage = "https://lunas.novesteria.com"
+repository = "https://github.com/novesteria/lunas-core"
+documentation = "https://github.com/novesteria/lunas-core/tree/main/docs"
+issues = "https://github.com/novesteria/lunas-core/issues"
+changelog = "https://github.com/novesteria/lunas-core/blob/main/CHANGELOG.md"
+
+[tool.hatch.version]
+path = "lunas/__init__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["lunas", "lunas_cli"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "UP", "B", "SIM", "ARG"]
+ignore = ["E501"]  # line-length handled by formatter
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["ARG"]  # pytest fixtures are injected by name
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+warn_return_any = true
+warn_unused_configs = true
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

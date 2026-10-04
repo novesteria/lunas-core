@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "passed": false,
+  "min_capped_dimensions": {
+    "palette": 4
+  },
+  "deterministic_override_expected": true,
+  "expected_missing_hex": ["#2A5252", "#476B57", "#B68A3E", "#E9ECE6", "#1F2421"],
+  "expected_missing_fonts": ["Lora", "Inter"],
+  "rationale": "Brief specifies forest-green editorial palette + Lora/Inter fonts. Code uses generic indigo/slate Tailwind defaults and system-ui font stack. 5/5 hex codes and both fonts are absent — palette must be capped, philosophy may also be capped due to font absence."
+}

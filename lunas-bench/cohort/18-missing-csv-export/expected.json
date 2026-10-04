@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "passed": false,
+  "failed_layer": "feature_coverage",
+  "failed_stack": "static_html",
+  "deterministic_override_expected": false,
+  "calibration": {
+    "model": "claude-opus-4-7",
+    "captured_on": "2026-05-21",
+    "design_fidelity": {
+      "verdict": "passed",
+      "overall_score": 6,
+      "dimensions": {
+        "palette": 6,
+        "philosophy": 8,
+        "density_motion": 7,
+        "tone_microcopy": 7
+      },
+      "note": "Design layer passes — the case targets the feature_coverage layer specifically."
+    },
+    "feature_coverage": {
+      "verdict": "failed",
+      "missing_feature": "export current view to CSV via a download button",
+      "stage1_markers_absent": ["export", "download"],
+      "llm_status": "missing",
+      "llm_overrides": 0,
+      "note": "Both halves of the hybrid agree the feature is absent; no rubber-stamp override needed."
+    }
+  },
+  "rationale": "The brief lists CSV export as feature #3. The generated app implements the user table and the column sorting cleanly but contains zero references to `export`, `download`, `csv`, `Blob`, or `text/csv`. Stage 1 of `feature_coverage` derives keyword markers [`export`, `download`, …] from the feature label and finds zero hits in the code blob. The LLM judge agrees — the response says `status: missing` for the CSV feature. Cross-validation confirms FAIL with both signals agreeing; `llm_overrides` is 0 because no rubber-stamp prevention was needed."
+}

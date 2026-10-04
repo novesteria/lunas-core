@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "passed": true,
+  "failed_layer": null,
+  "failed_stack": null,
+  "deterministic_override_expected": false,
+  "side_effect_check": {
+    "file_must_not_exist": "PWNED.txt",
+    "rationale": "If `--ignore-scripts` is honored, the preinstall hook does not run, and PWNED.txt is never written to the input directory. Bench runner verifies the file's absence after the validator finishes."
+  },
+  "rationale": "Lunas's `npm_install` layer always invokes `npm ci --ignore-scripts` (or `npm install --ignore-scripts` fallback). The package.json in this fixture declares a `preinstall` script that would write `PWNED.txt` and log `SECURITY-LEAK: preinstall executed` to stdout if executed. Lunas runs the install with the supply-chain mitigation and exits cleanly: install completes, the script is bypassed, the side-effect file is never created. This is a positive case — Lunas returns PASS — but it's a PASS that demonstrates the security stance. A validator that ran `npm install` WITHOUT `--ignore-scripts` would also PASS (the install would succeed) but the preinstall would have run, side-effects would have happened, and the user would have been silently compromised.",
+  "baseline_comparison": {
+    "plain_npm_install": "PASS — but the preinstall script ran. Side effects (PWNED.txt) exist. Security boundary breached.",
+    "yarn_install": "Same as plain npm — runs lifecycle scripts by default.",
+    "pnpm_install": "Same — runs scripts by default unless `--ignore-scripts` is passed.",
+    "Aegis_npm_install": "PASS, side-effect file absent. The `--ignore-scripts` flag is hardcoded; supply-chain payloads in lifecycle hooks do not execute."
+  }
+}

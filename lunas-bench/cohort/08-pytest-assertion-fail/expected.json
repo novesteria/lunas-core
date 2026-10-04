@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "passed": false,
+  "failed_layer": "pytest",
+  "failed_stack": "python",
+  "deterministic_override_expected": false,
+  "stdout_contains": [
+    "FAILED",
+    "test_one_year_five_percent",
+    "1051.25"
+  ],
+  "rationale": "The brief asks for WEEKLY-compound interest: principal * (1 + annual_rate/52) ** (52 * years). The generated `compound_interest` instead returns simple interest (principal * rate * years). The function parses fine, the module imports fine, all static layers (python_imports, python_completeness, python_deps_completeness) pass — there is no syntactic or structural cue that the formula is wrong. The pytest layer runs the reference scenarios (1k @ 5% for 1y → 1051.25; 5k @ 7% for 3y → 6166.13) and the assertions blow up because simple interest produces 50.0 and 1050.0 instead. This case is the textbook argument for keeping test execution in the validator stack: no static analysis catches a wrong formula, only running the tests does.",
+  "baseline_comparison": {
+    "pylint": "PASS — pylint sees a well-formed function with type hints and a return statement. The formula is wrong, not the structure.",
+    "ruff": "PASS — same.",
+    "mypy": "PASS — types check out.",
+    "raw_llm_critique": "INCONSISTENT — sometimes catches by reading the function name versus body, sometimes overlooks. Depends heavily on prompt wording.",
+    "gpt4_critique": "Same as above.",
+    "static_tools": "All clean. Only the test execution catches the wrong formula."
+  }
+}

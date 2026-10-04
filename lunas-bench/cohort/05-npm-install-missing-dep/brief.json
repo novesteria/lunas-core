@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "archetype": "form-heavy",
+  "intent": "A simple single-page React todo list. Users can add, check off, and delete items. Persistence is in-memory only — no backend.",
+  "stack": {
+    "frontend": "React 18",
+    "build_tool": "Vite",
+    "language": "JavaScript (ESM)"
+  },
+  "brand": {
+    "has_logo": false,
+    "palette": {
+      "primary":   "#476B57",
+      "secondary": "#324F40",
+      "accent":    "#B68A3E",
+      "bg":        "#E9ECE6",
+      "fg":        "#1F2421"
+    },
+    "fonts": {
+      "heading": "Inter",
+      "body":    "Inter"
+    },
+    "tone": ["minimal", "calm", "functional"]
+  },
+  "philosophy": {
+    "id": "editorial",
+    "label": "Editorial",
+    "rules": {
+      "max_colors": 5,
+      "typography_style": "sans-serif",
+      "spacing_scale": "comfortable",
+      "decoration": "minimal"
+    }
+  },
+  "density": "comfortable",
+  "motion": "subtle",
+  "features": [
+    "add a new todo via input + Enter key",
+    "toggle done state via checkbox",
+    "delete a todo via × button",
+    "show count of remaining (undone) todos"
+  ],
+  "notes": "Standard React 18 todo app, idiomatic functional components, useState for state. No persistence, no router, no API calls."
+}

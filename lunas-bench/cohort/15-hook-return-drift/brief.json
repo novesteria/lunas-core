@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "archetype": "info-display",
+  "intent": "A React dashboard that fetches a coin list from a hook and displays it. The dashboard shows the list, a loading state, and a 'last updated' timestamp.",
+  "stack": {
+    "frontend": "React 18",
+    "language": "TypeScript",
+    "build_tool": "Vite"
+  },
+  "brand": {
+    "has_logo": false,
+    "palette": { "primary": "#0EA5E9", "secondary": "#0369A1", "accent": "#F59E0B", "bg": "#0F172A", "fg": "#F1F5F9" },
+    "fonts":   { "heading": "Inter", "body": "Inter" },
+    "tone":    ["technical"]
+  },
+  "philosophy": { "id": "editorial", "label": "Editorial", "rules": {} },
+  "density": "compact",
+  "motion": "subtle",
+  "features": [
+    "useCoins hook fetches the coin list",
+    "Dashboard shows list of coins",
+    "Dashboard shows isLoading state",
+    "Dashboard shows lastUpdated timestamp"
+  ],
+  "notes": "Custom hook lives in src/hooks/useCoins.ts. Dashboard consumes it via const { coins, isLoading, lastUpdated } = useCoins(). Keep the hook's return shape and the consumer's destructure in sync."
+}

@@ -1,0 +1,7 @@
+{
+  "version": 1,
+  "passed": true,
+  "min_capped_dimensions": {},
+  "deterministic_override_expected": false,
+  "rationale": "Brief is fully honored. All five palette hex codes appear in CSS as :root variables. Lora and Inter are imported from Google Fonts and used in font-family declarations. No linear-gradient, box-shadow with 0 0 spread, backdrop-filter, or text-shadow. Editorial philosophy permits this exact pattern. Validator should pass cleanly."
+}

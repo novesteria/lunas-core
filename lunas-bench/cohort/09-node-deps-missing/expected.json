@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "passed": false,
+  "failed_layer": "node_deps_completeness",
+  "failed_stack": "node",
+  "deterministic_override_expected": false,
+  "details_contains": {
+    "missing_packages": ["axios", "date-fns"],
+    "files_scanned_min": 1
+  },
+  "rationale": "`src/fetch.js` does `import axios from 'axios'` and `import { format } from 'date-fns'` but `package.json`'s `dependencies` object is empty. The `node_deps_completeness` layer walks the JS source, extracts every bare-specifier import, normalises scoped packages and subpath imports, and reports anything not declared in any of dependencies / devDependencies / peerDependencies / optionalDependencies. axios + date-fns both surface as missing. This is a STATIC layer (milliseconds), no subprocess — `npm install` would also fail eventually, but only AFTER spinning up a network round-trip; this case demonstrates that catching missing-dep statically gives a fix step a clean signal long before install.",
+  "baseline_comparison": {
+    "eslint": "PARTIAL — eslint-plugin-import with the `no-extraneous-dependencies` rule catches this; vanilla eslint does not. Most teams don't enable the rule by default.",
+    "tsc": "N/A — no tsconfig; this is plain JS.",
+    "npm_install": "Eventually catches (no axios in node_modules → module-not-found at runtime). But install must run, which adds seconds and depends on network. Catching upstream is cheaper.",
+    "raw_llm_critique": "UNRELIABLE — may or may not flag the missing deps depending on prompt framing.",
+    "static_tools": "Most static tools require an eslint plugin specifically configured for this. Lunas enables the equivalent check by default."
+  }
+}

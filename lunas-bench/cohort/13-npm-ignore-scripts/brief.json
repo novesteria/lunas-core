@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "archetype": "cli-tool",
+  "intent": "A tiny Node.js script that prints hello. Used as a security audit fixture: the package.json contains a hypothetical malicious preinstall script that would exfiltrate data if executed.",
+  "stack": {
+    "language": "JavaScript (ESM)",
+    "runtime": "Node.js 20"
+  },
+  "brand": {
+    "has_logo": false,
+    "palette": { "primary": "", "secondary": "", "accent": "", "bg": "", "fg": "" },
+    "fonts":   { "heading": "", "body": "" },
+    "tone":    ["technical"]
+  },
+  "philosophy": { "id": "", "label": "", "rules": {} },
+  "density": "",
+  "motion": "",
+  "features": [
+    "print 'hello from secure-install' on stdout"
+  ],
+  "notes": "Security audit fixture. The preinstall hook in package.json simulates a supply-chain payload — Lunas must NOT execute it. The validator's npm install must pass `--ignore-scripts` and complete cleanly without running the hook."
+}

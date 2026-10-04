@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "passed": false,
+  "failed_layer": "pytest",
+  "failed_stack": "python",
+  "deterministic_override_expected": false,
+  "stdout_contains": [
+    "NameError",
+    "asyncio",
+    "src/api.py",
+    "FAILED"
+  ],
+  "rationale": "`src/api.py` calls `await asyncio.sleep(1)` but never imports `asyncio`. The module loads without complaint (the NameError only triggers when the async function is actually invoked). Static layers — `python_imports`, `python_completeness`, `python_deps_completeness` — all pass because each verifies a different invariant: imports that ARE present resolve, no critical stubs, and declared deps cover used third-party packages. None of them flags 'name used but never imported'. The bug surfaces when pytest runs the test, calls get_time(), and the runtime fails with NameError. This case is the strongest argument for keeping `pytest` in the deterministic layer stack — no static check catches this class of bug for stdlib names.",
+  "baseline_comparison": {
+    "pyflakes": "Catches — pyflakes specifically flags 'name used but not imported'. Lunas does not currently run pyflakes inline; pytest catches the same failure at runtime.",
+    "pylint": "Catches — same as pyflakes.",
+    "ruff": "Catches with rule F821 (undefined-name).",
+    "raw_llm_critique": "Inconsistent — may or may not notice depending on prompt framing.",
+    "static_tools": "Linters catch this; the case primarily demonstrates that even when static linters are skipped, the pytest layer is a guaranteed backstop."
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "archetype": "info-display",
+  "intent": "A small React + TypeScript dashboard that shows three crypto cards in a grid (BTC, ETH, SOL). Each card displays the coin's symbol, name, and current price.",
+  "stack": {
+    "frontend": "React 18",
+    "language": "TypeScript",
+    "build_tool": "Vite"
+  },
+  "brand": {
+    "has_logo": false,
+    "palette": {
+      "primary":   "#0EA5E9",
+      "secondary": "#0369A1",
+      "accent":    "#F59E0B",
+      "bg":        "#0F172A",
+      "fg":        "#F1F5F9"
+    },
+    "fonts": {
+      "heading": "Inter",
+      "body":    "Inter"
+    },
+    "tone": ["technical", "dense"]
+  },
+  "philosophy": {
+    "id": "editorial",
+    "label": "Editorial",
+    "rules": {
+      "max_colors": 5,
+      "typography_style": "sans-serif",
+      "spacing_scale": "compact",
+      "decoration": "minimal"
+    }
+  },
+  "density": "compact",
+  "motion": "abrupt",
+  "features": [
+    "render three coin cards (BTC, ETH, SOL) in a grid",
+    "each card shows symbol, name, current price"
+  ],
+  "notes": "Standard React + TS. CryptoCard component takes a single typed prop; CryptoGrid feeds it the cards. Keep prop names consistent across files."
+}

@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "passed": false,
+  "failed_layer": "hook_destructure_consistency",
+  "failed_stack": "node",
+  "deterministic_override_expected": false,
+  "details_contains": {
+    "hook": "useCoins",
+    "returned": ["coins", "isLoading"],
+    "missing_destructured": ["lastUpdated"]
+  },
+  "rationale": "The brief asks for `useCoins` to expose `lastUpdated`. The hook implementation returns only `{ coins, isLoading }`. The Dashboard consumer destructures `const { coins, isLoading, lastUpdated } = useCoins()`. At runtime, `lastUpdated` is `undefined`, and `formatDate(lastUpdated)` crashes when it calls `.toLocaleString()`. tsc would catch this only if the hook had an explicit return type annotation — agent-generated hooks rarely do. `hook_destructure_consistency` walks every `function/const useX = ... return { … }` (supports concise arrows, block arrows, and traditional function declarations), extracts the LAST top-level return object's keys, then scans `const {…} = useX()` consumers and flags any destructured name not in the returned shape. Hooks whose return shape can't be extracted confidently (spread, computed keys) are dropped from the audit — silence beats false positives.",
+  "baseline_comparison": {
+    "tsc": "PARTIAL — catches IF the hook has an explicit return type. Without one (common in agent output), tsc infers the return type from the literal and lets the bug through.",
+    "eslint-plugin-react-hooks": "PASS — the existing rules (exhaustive-deps, rules-of-hooks) don't validate return-shape vs. consumer-destructure.",
+    "raw_llm_critique": "UNRELIABLE — small files: usually catches. Multi-file: misses cross-file return drift.",
+    "manual_QA": "Catches when the page first renders and crashes."
+  }
+}
